@@ -3,7 +3,7 @@ function init() {
     var selector = d3.select("#selDataset");
     
     // Add list of IDs to "Select Sample" HTML Dropdown menu
-      d3.json("samples.json").then((dataset) => {
+      d3.json("/samples.json").then((dataset) => {
         var subjectID = dataset.names;
         subjectID.forEach((ID) => {
           selector
@@ -23,7 +23,7 @@ function init() {
   //Update the Demographic Info inside the index.html metapanel id
   //Using the keys from the metadata to populate
   function updateMetadata(demographicinfo) {
-    d3.json("samples.json").then((dataset) => {
+    d3.json("/samples.json").then((dataset) => {
         var metadata = dataset.metadata;
         var filterArray = metadata.filter(thing => thing.id == demographicinfo);
         var result = filterArray[0];
@@ -39,7 +39,7 @@ function init() {
   //Create function to update chart data
   //from the data json object, to build the plots
   function updateCharts(sample) {    
-    d3.json("samples.json").then((dataset) => {
+    d3.json("/samples.json").then((dataset) => {
     var samples = dataset.samples;
     var filterArray = samples.filter(thing => thing.id == sample);
     var result = filterArray[0];
